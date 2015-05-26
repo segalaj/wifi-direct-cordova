@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android" id="com.segalaj.wifidirect" version="0.1.0">
+
+  <name>Wifi Direct</name>
+  <description>Wifi Direct plugin. Allow to manage connection though Wifi Direct.</description>
+  <author>segalaj</author>
+  <license>MIT</license>
+  <keywords>wifi,direct,p2p,wifi-direct,connectivity,net</keywords>
+  <repo>https://github.com/segalaj/wifi-direct-cordova.git</repo>
+  <issue>https://github.com/segalaj/wifi-direct-cordova/issues</issue>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <js-module src="www/wifidirect.js" name="wifidirect">
+    <clobbers target="wifidirect" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="wifidirect">
+        <param name="android-package" value="com.segalaj.cordova.wifidirect.WifiDirect"/>
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+      <uses-permission android:name="android/permission.CHANGE_WIFI_STATE" />
+      <uses-permission android:name="android.permission.INTERNET" />
+    </config-file>
+
+    <source-file src="src/android/WifiDirect.java" target-dir="src/com/segalaj/cordova/wifidirect"/>
+  </platform>
+</plugin>
