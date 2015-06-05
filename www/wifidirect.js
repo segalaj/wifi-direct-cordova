@@ -1,7 +1,15 @@
 /*global cordova, module*/
+var exec = require('cordova/exec');
 
-module.exports = {
-    greet: function (name, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "wifidirect", "greet", [name]);
-    }
-};
+function WifiDirect() {}
+
+WifiDirect.prototype.getStatus = function() {
+    exec(function(msg) { alert(msg); },
+                 function(msg) { alert("Error: " + msg); },
+                 "WifiDirect",
+                 "getStatus",
+                 []);
+}
+
+var wifidirect = new WifiDirect();
+module.exports = wifidirect;
